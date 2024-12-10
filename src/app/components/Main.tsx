@@ -12,6 +12,7 @@ import { fetchComments } from '@/scripts/contractUtils'
 export default function Main() {
   const [comments, setComments] = useState<any[]>([]);
   const [account, setAccount] = useState<string>("");
+  const [sortingMethod, setSortingMethod] = useState<'latest' | 'hottest' | null>(null)
 
   // 获取当前 MetaMask 钱包地址
   const checkConnection = async () => {
@@ -48,11 +49,13 @@ export default function Main() {
   const sortByTime = () => {
     const sorted = [...comments].sort((a, b) => b.timestamp - a.timestamp);
     setComments(sorted);
+    setSortingMethod('latest')
   };
 
   const sortByLikes = () => {
     const sorted = [...comments].sort((a, b) => b.likes - a.likes);
     setComments(sorted);
+    setSortingMethod('hottest')
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,7 +129,7 @@ export default function Main() {
             </div>
           </form>
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">最新</h2>
+          评论列表 {sortingMethod === 'latest' ? '（最新）' : sortingMethod === 'hottest' ? '（最热）' : ''}
             <div className='max-h-[595px] overflow-auto hide-scrollbar pl-2 pr-4 py-2'>
                 <CommentList comments={comments} />
             </div>

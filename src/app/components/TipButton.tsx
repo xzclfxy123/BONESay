@@ -30,6 +30,7 @@ export function TipButton({ recipient, token }: TipButtonProps) {
         title: "错误",
         description: "请输入有效的打赏金额",
         variant: "destructive",
+        duration: 5000
       })
       return
     }
@@ -59,6 +60,7 @@ export function TipButton({ recipient, token }: TipButtonProps) {
         toast({
           title: "打赏成功",
           description: `成功发送 ${amount} ${token} 到 ${recipient}`,
+          duration: 5000
         })
       } else {
         toast({

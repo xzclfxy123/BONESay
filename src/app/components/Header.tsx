@@ -144,10 +144,10 @@ export function Header({
                   <Link href={"https://bones.icu/"}>BONES</Link>
                 </DropdownMenuLabel>
                 <DropdownMenuLabel>
-                  <Link href={"https://onboard.bones.icu/"}>ONBOARD</Link>
+                  <Link href={"https://register.deworkhub.com/"}>ONBOARD</Link>
                 </DropdownMenuLabel>
                 <DropdownMenuLabel>
-                  <Link href={"https://pay.bones.icu/"}>BONESPay</Link>
+                  <Link href={"https://pay.deworkhub.com/"}>BONESPay</Link>
                 </DropdownMenuLabel>
               </DropdownMenuContent>
             </DropdownMenu>
