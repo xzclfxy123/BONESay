@@ -5,8 +5,6 @@ import { ethers } from "ethers"
 import Abi from "@/contracts/platon_abi.json"
 import { fetchComments } from '@/scripts/contractUtils'
 import { TipButton } from '@/app/components/TipButton'
-import { toast } from '@/components/ui/use-toast'
-import { Toast } from '@/components/ui/toast'
 
 interface Comment {
   content: string;
@@ -26,7 +24,6 @@ export function CommentList({ comments }: CommentListProps) {
   const [commentsState, setCommentsState] = useState<Comment[]>(comments)
   const [copiedCommentId, setCopiedCommentId] = useState<string | null>(null)
   const [tippingComment, setTippingComment] = useState<string | null>(null)
-  const [account, setAccount] = useState<string>("")
   const [tipAmount, setTipAmount] = useState<string>("")  // 用于存储用户输入的打赏金额
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)  // 用于控制打赏弹窗的显示
   const [error, setError] = useState<string>("")  // 用于显示输入错误信息
@@ -34,25 +31,9 @@ export function CommentList({ comments }: CommentListProps) {
   const tippingRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    checkConnection()
     fetchComments()
   }, [])
 
-  // 检查 MetaMask 钱包连接
-  const checkConnection = async () => {
-    if (typeof window.ethereum !== "undefined") {
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_accounts",
-        });
-        if (accounts.length > 0) {
-          setAccount(accounts[0]);
-        }
-      } catch (err) {
-        console.error("获取账户失败", err);
-      }
-    }
-  };
 
   // 点赞评论
   const likeComment = async (commentId: number) => {
