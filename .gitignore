@@ -38,3 +38,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 合约地址及abi
+/src/scripts/contractUtils.ts
+/src/contracts/platon_abi.json
