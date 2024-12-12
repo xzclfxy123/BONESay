@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import Abi from "@/contracts/platon_abi.json";  
 
-const contractAddress = "0x83d471Bc460bfB6c1119E084a6f0d2c21672c37d";   
+const contractAddress = ""; // 合约地址
 
 export const fetchComments = async () => {
     if (typeof window.ethereum !== "undefined") {
